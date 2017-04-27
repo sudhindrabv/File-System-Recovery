@@ -1,0 +1,36 @@
+/*	cp 1.12 - copy files				Author: Kees J. Bot
+ *	mv      - move files					20 Jul 1993
+ *	rm      - remove files
+ *	ln      - make a link
+ *	cpdir   - copy a directory tree (cp -psmr)
+ *	clone   - make a link farm (ln -fmr)
+ */
+#define nil 0
+#include <stdio.h>
+#include <sys/types.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stddef.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <time.h>
+#include <sys/stat.h>
+#include <utime.h>
+#include <dirent.h>
+#include <errno.h>
+#include <assert.h>
+
+/* Copy files in this size chunks: */
+#if __minix && !__minix_vmd
+#define CHUNK	(8192 * sizeof(char *))
+#else
+#define CHUNK	(1024 << (sizeof(int) + sizeof(char *)))
+#endif
+
+
+#ifndef CONFORMING
+#define CONFORMING	1	/* Precisely POSIX conforming. */
+#endif
+
+
+#define arraysize(a)	(sizeof(

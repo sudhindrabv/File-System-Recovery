@@ -1,0 +1,4 @@
+Filesystem      Size (kB)       Free       Used    % Files%   Mounted on
+/dev/c0d0p0s0       65536      41572      23964  37%     3%   /
+/dev/c0d0p0s2     1699280    1207300     491980  29%     5%   /usr
+/dev/c0d0p0s1      331776     326524       5252   2%     1%   /home
